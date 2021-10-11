@@ -7,7 +7,7 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Fugitive
+    -- Fugitive; git integration with nvim
     use 'tpope/vim-fugitive'
 
     -- Signify
@@ -32,8 +32,11 @@ return require('packer').startup(function()
     -- lua lsp
     use 'sumneko/lua-language-server'
 
-    -- contains golang lsp
-    use 'ray-x/go.nvim'
+    -- go lsp
+    use 'fatih/vim-go'
+
+    -- syntax parser
+    use 'nvim-treesitter/nvim-treesitter'
 
     -- autoclose plugin
     use 'windwp/nvim-autopairs'
@@ -59,6 +62,10 @@ return require('packer').startup(function()
     -- Which Key
     use 'liuchengxu/vim-which-key'
 
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  Color Schemes
+    -- --------------------------------------------------------------------------------------------------------------
+
     -- tokyonight theme
     use 'folke/tokyonight.nvim'
 
@@ -74,33 +81,6 @@ return require('packer').startup(function()
         end
     }
 
-    -- Lazy loading:
-    -- Load on specific commands
-    use {
-        'tpope/vim-dispatch',
-        opt = true,
-        cmd = {'Dispatch', 'Make', 'Focus', 'Start'}
-    }
-
-    -- Load on an autocommand event
-    use {
-        'andymass/vim-matchup',
-        event = 'VimEnter'
-    }
-
-    -- Load on a combination of conditions: specific filetypes or commands
-    -- Also run code after load (see the "config" key)
-    use {
-        'w0rp/ale',
-        ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-        cmd = 'ALEEnable',
-        config = 'vim.cmd[[ALEEnable]]'
-    }
-
-    -- You can specify rocks in isolation
-    use_rocks 'penlight'
-    use_rocks {'lua-resty-http', 'lpeg'}
-
     -- Use dependency and run lua function after load
     use {
         'lewis6991/gitsigns.nvim',
@@ -110,17 +90,16 @@ return require('packer').startup(function()
         end
     }
 
-    -- You can specify multiple plugins in a single call
+    -- Lazy loading:
+    -- Load on specific commands
     use {
-        'tjdevries/colorbuddy.vim', {
-            'nvim-treesitter/nvim-treesitter',
-            opt = true
-        }
+        'tpope/vim-dispatch',
+        opt = true,
+        cmd = {'Dispatch', 'Make', 'Focus', 'Start'}
     }
 
-    -- You can alias plugin names
-    use {
-        'dracula/vim',
-        as = 'dracula'
-    }
+    -- You can specify rocks in isolation
+    use_rocks 'penlight'
+    use_rocks {'lua-resty-http', 'lpeg'}
+
 end)
