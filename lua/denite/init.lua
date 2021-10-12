@@ -45,7 +45,7 @@ denite_options['default']['prompt'] = '道'
 denite_options['default']['highlight_matched_char'] = 'QuickFixLine'
 denite_options['default']['highlight_matched_range'] = 'Visual'
 denite_options['default']['highlight_filter_background'] = 'DiffAdd'
-denite_options['default']['vertical_preview'] = 1
+-- denite_options['default']['vertical_preview'] = 1
 denite_options['default']['winheight'] = 100
 denite_options['default']['winwidth'] = vim.o.columns
 

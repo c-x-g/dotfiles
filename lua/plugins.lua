@@ -10,6 +10,9 @@ return require('packer').startup(function()
     -- Fugitive; git integration with nvim
     use 'tpope/vim-fugitive'
 
+    -- sindrets; tool that easily navigates git file changes
+    use 'sindrets/diffview.nvim'
+
     -- Signify
     use 'mhinz/vim-signify'
 

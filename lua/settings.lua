@@ -18,13 +18,14 @@ utils.opt('o', 'hidden', true)
 utils.opt('o', 'ignorecase', true)
 utils.opt('w', 'number', true)
 utils.opt('o', 'termguicolors', true)
-utils.opt('o', 'completeopt', 'menuone,noinsert,noselect,preview')
+utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- set line numbers in NERDTree
 vim.g['NERDTreeShowLineNumbers'] = 1
+vim.g['NERDTreeWinSize'] = 50
 
-utils.opt('o', 'previewheight', 50)
-utils.opt('o', 'winwidth', vim.o.columns)
+-- utils.opt('o', 'previewheight', 50)
+-- utils.opt('o', 'winwidth', vim.o.columns)
 vim.opt.shortmess = vim.opt.shortmess + 'A'
 -- local SM = vim.opt.shortmess + 'A'
 -- utils.opt('o', 'shortmess', vim.opt.shortmess..'A')
