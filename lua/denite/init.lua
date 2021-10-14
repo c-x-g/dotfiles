@@ -61,4 +61,4 @@ cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <Space> denite#do_m
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-v> denite#do_map(\'vsplit\').\'j\'')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-x> denite#do_map(\'split\').\'j\'')
 
-cmd('autocmd User denite-preview set number')
+cmd('autocmd User denite-preview setlocal number')

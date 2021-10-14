@@ -2,6 +2,7 @@ local utils = require('utils')
 
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
 utils.map('n', '<space>f', ':Denite file/rec -start-filter<CR>')
+utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
 utils.map('n', '<space>e', ':NERDTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 

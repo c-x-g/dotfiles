@@ -8,7 +8,7 @@ require('autopairs')
 
 -- lsp dependencies
 require('lua-lsp')
--- require('go-lsp')
+require('go-lsp')
 require('typescript-lsp')
 require('rust-analyzer')
 -- require('lspconfig-configurations')
@@ -18,4 +18,5 @@ require('efm-langserver')
 
 -- require('treesitter')
 require('autoformatter')
--- require('sindrets-diffview')
+
+require('sindrets-diffview')

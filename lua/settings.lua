@@ -22,10 +22,14 @@ utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- set line numbers in NERDTree
 vim.g['NERDTreeShowLineNumbers'] = 1
-vim.g['NERDTreeWinSize'] = 50
 
+-- control the width of the file explorer tab
+-- vim.g['NERDTreeWinSize'] = 50
+
+-- these two lines were causing bugs with the NERDTree window
 -- utils.opt('o', 'previewheight', 50)
 -- utils.opt('o', 'winwidth', vim.o.columns)
+
 vim.opt.shortmess = vim.opt.shortmess + 'A'
 -- local SM = vim.opt.shortmess + 'A'
 -- utils.opt('o', 'shortmess', vim.opt.shortmess..'A')
