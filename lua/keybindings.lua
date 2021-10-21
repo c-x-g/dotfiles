@@ -1,21 +1,24 @@
 local utils = require('utils')
 
+-- remap leader key from \ to spacebar
+vim.g.mapleader = ' '
+
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
-utils.map('n', '<space>f', ':Denite file/rec -start-filter<CR>')
+utils.map('n', '<leader>f', ':Denite file/rec -start-filter<CR>')
 utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
-utils.map('n', '<space>e', ':NERDTreeToggle<CR>')
+utils.map('n', '<leader>e', ':NERDTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
 -- tab management
 utils.map('n', '<leader>t', ':tabs<CR>')
 utils.map('n', '<leader>nt', ':tabnew<CR>')
-utils.map('n', '<space><Left>', ':tabl<CR>')
-utils.map('n', '<space><Right>', ':tabr<CR>')
+utils.map('n', '<leader><Left>', ':tabl<CR>')
+utils.map('n', '<leader><Right>', ':tabr<CR>')
 
 -- diffview shortcuts
 utils.map('n', '<leader>df', ':DiffviewOpen<CR>')
-utils.map('n', '<leader>dfh', ':DiffviewFileHistory')
-utils.map('n', '<space>dft', ':DiffviewToggle<CR>')
+utils.map('n', '<leader>dfh', ':DiffviewFileHistory ')
+utils.map('n', '<leader>dft', ':DiffviewToggle<CR>')
 
 -- map scrolling up to Ctrl + s
 utils.map('n', '<C-s>', '<C-u>')
