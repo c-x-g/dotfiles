@@ -15,6 +15,18 @@ utils.map('n', '<leader>nt', ':tabnew<CR>')
 utils.map('n', '<leader><Left>', ':tabl<CR>')
 utils.map('n', '<leader><Right>', ':tabr<CR>')
 
+-- jump between tabs
+utils.map('n', '<leader>1', '1gt')
+utils.map('n', '<leader>2', '2gt')
+utils.map('n', '<leader>3', '3gt')
+utils.map('n', '<leader>4', '4gt')
+utils.map('n', '<leader>5', '5gt')
+utils.map('n', '<leader>6', '6gt')
+utils.map('n', '<leader>7', '7gt')
+utils.map('n', '<leader>8', '8gt')
+utils.map('n', '<leader>9', '9gt')
+utils.map('n', '<leader>0', ':tablast<CR>')
+
 -- diffview shortcuts
 utils.map('n', '<leader>df', ':DiffviewOpen<CR>')
 utils.map('n', '<leader>dfh', ':DiffviewFileHistory ')
