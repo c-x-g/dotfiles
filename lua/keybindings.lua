@@ -20,6 +20,11 @@ utils.map('n', '<leader>df', ':DiffviewOpen<CR>')
 utils.map('n', '<leader>dfh', ':DiffviewFileHistory ')
 utils.map('n', '<leader>dft', ':DiffviewToggle<CR>')
 
+-- git shortcuts
+utils.map('n', '<leader>ga', ':G add .<CR>')
+utils.map('n', '<leader>gcm', ':G commit -m \"')
+utils.map('n', '<leader>gpo', ':G push origin ')
+
 -- map scrolling up to Ctrl + s
 utils.map('n', '<C-s>', '<C-u>')
 
