@@ -6,6 +6,17 @@ utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
 utils.map('n', '<space>e', ':NERDTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
+-- tab management
+utils.map('n', '<leader>t', ':tabs<CR>')
+utils.map('n', '<leader>nt', ':tabnew<CR>')
+utils.map('n', '<space><Left>', ':tabl<CR>')
+utils.map('n', '<space><Right>', ':tabr<CR>')
+
+-- diffview shortcuts
+utils.map('n', '<leader>df', ':DiffviewOpen<CR>')
+utils.map('n', '<leader>dfh', ':DiffviewFileHistory')
+utils.map('n', '<space>dft', ':DiffviewToggle<CR>')
+
 -- map scrolling up to Ctrl + s
 utils.map('n', '<C-s>', '<C-u>')
 

@@ -39,14 +39,17 @@ denite_options['default']['split'] = 'floating'
 denite_options['default']['floating_border'] = 'double'
 -- denite_options['default']['floating_preview'] = true
 denite_options['default']['start_filter'] = true
-denite_options['default']['auto_resize'] = 1
+-- denite_options['default']['auto_resize'] = 1
 denite_options['default']['source_names'] = 'short'
 denite_options['default']['prompt'] = '道'
 denite_options['default']['highlight_matched_char'] = 'QuickFixLine'
 denite_options['default']['highlight_matched_range'] = 'Visual'
 denite_options['default']['highlight_filter_background'] = 'DiffAdd'
 -- denite_options['default']['vertical_preview'] = 1
-denite_options['default']['winheight'] = 100
+denite_options['default']['filter_zindex'] = 1
+denite_options['default']['preview_height'] = 80
+denite_options['default']['winrow'] = 80
+denite_options['default']['winheight'] = 40
 denite_options['default']['winwidth'] = vim.o.columns
 
 for e_key, _ in pairs(denite_options) do
