@@ -11,6 +11,7 @@ utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
 -- tab management
 utils.map('n', '<leader>t', ':tabs<CR>')
+utils.map('n', '<leader>tc', ':tabclose<CR>')
 utils.map('n', '<leader>nt', ':tabnew<CR>')
 utils.map('n', '<leader><Left>', ':tabl<CR>')
 utils.map('n', '<leader><Right>', ':tabr<CR>')
@@ -29,6 +30,7 @@ utils.map('n', '<leader>0', ':tablast<CR>')
 
 -- diffview shortcuts
 utils.map('n', '<leader>df', ':DiffviewOpen<CR>')
+utils.map('n', '<leader>dfc', ':DiffviewClose<CR>')
 utils.map('n', '<leader>dfh', ':DiffviewFileHistory ')
 utils.map('n', '<leader>dft', ':DiffviewToggle<CR>')
 

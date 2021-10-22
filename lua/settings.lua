@@ -17,7 +17,7 @@ utils.opt('b', 'tabstop', indent)
 utils.opt('o', 'hidden', true)
 utils.opt('o', 'ignorecase', true)
 utils.opt('w', 'number', true)
-utils.opt('o', 'termguicolors', true)
+-- utils.opt('o', 'termguicolors', true)
 utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- set line numbers in NERDTree

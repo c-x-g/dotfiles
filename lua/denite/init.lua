@@ -56,7 +56,7 @@ for e_key, _ in pairs(denite_options) do
     for i_key, i_value in pairs(denite_options[e_key]) do vim.api.nvim_call_function('denite#custom#option', {e_key, i_key, i_value}) end
 end
 
-cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <CR> denite#do_map(\'do_action\', \'open\')')
+cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <CR> denite#do_map(\'do_action\', \'tabopen\')')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> p denite#do_map(\'do_action\', \'preview\')')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> q denite#do_map(\'quit\')')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> i denite#do_map(\'open_filter_buffer\')')
@@ -64,4 +64,14 @@ cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <Space> denite#do_m
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-v> denite#do_map(\'vsplit\').\'j\'')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-x> denite#do_map(\'split\').\'j\'')
 
-cmd('autocmd User denite-preview setlocal number')
+-- show line numbers in file search results
+cmd('autocmd FileType denite setlocal number')
+
+-- map the down arrow key to a function that quits the Denite filter buffer to go directly into the search results
+function SetDeniteFilterQuit()
+    cmd('imap <silent><buffer> <Down> <Plug>(denite_filter_update)')
+    cmd('imap <silent><buffer> <cr> <Plug>(denite_filter_update)')
+end
+cmd('autocmd FileType denite-filter lua SetDeniteFilterQuit()')
+
+-- cmd('autocmd User denite-preview setlocal number')
