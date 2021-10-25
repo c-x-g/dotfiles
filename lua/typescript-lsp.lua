@@ -1,2 +1,1 @@
-
 require'lspconfig'.tsserver.setup {}

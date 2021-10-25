@@ -17,10 +17,14 @@
 --             },
 --             procMacro = {
 --                 enable = true
+--             },
+--             checkOnSave = {
+--                 command = 'cargo fmt'
 --             }
 --         }
 --     }
 -- })
+-- 
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
