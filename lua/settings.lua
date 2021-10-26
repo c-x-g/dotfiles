@@ -9,6 +9,11 @@ cmd 'filetype plugin indent on'
 
 -- set the colorscheme
 cmd 'colorscheme gruvbox'
+-- cmd 'colorscheme nord'
+
+-- cmd 'colorscheme tokyonight'
+-- vim.o.background = 'light'
+-- vim.g.tokyonnight_style = 'day'
 
 utils.opt('b', 'expandtab', true)
 utils.opt('b', 'shiftwidth', indent)
@@ -21,7 +26,7 @@ utils.opt('w', 'number', true)
 utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- set line numbers in NERDTree
-vim.g['NERDTreeShowLineNumbers'] = 1
+-- vim.g['NERDTreeShowLineNumbers'] = 1
 
 -- control the width of the file explorer tab
 -- vim.g['NERDTreeWinSize'] = 50

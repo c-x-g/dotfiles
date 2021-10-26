@@ -54,7 +54,7 @@ return require('packer').startup(function()
     use 'hrsh7th/vim-vsnip'
 
     -- nerdtree
-    use 'preservim/nerdtree'
+    --    use 'preservim/nerdtree'
 
     -- colorizer
     use 'norcalli/nvim-colorizer.lua'
@@ -74,6 +74,12 @@ return require('packer').startup(function()
 
     -- gruvbox theme
     use 'morhetz/gruvbox'
+
+    -- nord-vim theme
+    use 'arcticicestudio/nord-vim'
+
+    -- aurora theme
+    use 'ray-x/aurora'
 
     -- nvim-tree (file explorer)
     use {

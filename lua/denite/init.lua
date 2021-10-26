@@ -61,8 +61,8 @@ cmd('autocmd FileType denite nnoremap <silent><buffer><expr> p denite#do_map(\'d
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> q denite#do_map(\'quit\')')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> i denite#do_map(\'open_filter_buffer\')')
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <Space> denite#do_map(\'toggle_select\').\'j\'')
-cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-v> denite#do_map(\'vsplit\').\'j\'')
-cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-x> denite#do_map(\'split\').\'j\'')
+-- cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-v> denite#do_map(\'vsplit\').\'j\'')
+-- cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-x> denite#do_map(\'split\').\'j\'')
 
 -- show line numbers in file search results
 cmd('autocmd FileType denite setlocal number')

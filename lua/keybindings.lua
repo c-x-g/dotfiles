@@ -6,7 +6,7 @@ vim.g.mapleader = ' '
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
 utils.map('n', '<leader>f', ':Denite file/rec -start-filter<CR>')
 utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
-utils.map('n', '<leader>e', ':NERDTreeToggle<CR>')
+utils.map('n', '<leader>e', ':NvimTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
 -- tab management
@@ -41,6 +41,8 @@ utils.map('n', '<leader>gpo', ':G push origin ')
 
 -- map scrolling up to Ctrl + s
 utils.map('n', '<C-s>', '<C-u>')
+utils.map('n', '<S-Up>', '<C-y>')
+utils.map('n', '<S-Down>', '<C-e>')
 
 -- local opts = {
 --     noremap = true,
