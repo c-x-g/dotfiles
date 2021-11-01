@@ -4,14 +4,14 @@ local utils = require('utils')
 vim.g.mapleader = ' '
 
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
-utils.map('n', '<leader>f', ':Denite file/rec -start-filter<CR>')
+utils.map('n', '<leader>p', ':Denite file/rec -start-filter<CR>')
 utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
 utils.map('n', '<leader>e', ':NvimTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
 
 -- tab management
 utils.map('n', '<leader>t', ':tabs<CR>')
-utils.map('n', '<leader>tc', ':tabclose<CR>')
+utils.map('n', '<leader>w', ':tabclose<CR>')
 utils.map('n', '<leader>nt', ':tabnew<CR>')
 utils.map('n', '<leader><Left>', ':tabl<CR>')
 utils.map('n', '<leader><Right>', ':tabr<CR>')
