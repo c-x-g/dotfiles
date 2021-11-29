@@ -54,6 +54,7 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 cmd([[
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
 ]])
 
 -- vim.api.nvim_exec([[

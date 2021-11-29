@@ -3,6 +3,7 @@ require('keybindings')
 
 require('plugins')
 require('border')
+-- require('rust-analyzer')
 require('completion-config')
 require('autopairs')
 
@@ -10,7 +11,8 @@ require('autopairs')
 require('lua-lsp')
 require('go-lsp')
 require('typescript-lsp')
-require('rust-analyzer')
+require('python-lsp')
+require('java-lsp')
 -- require('lspconfig-configurations')
 
 -- efm-langserver; the autoformatter

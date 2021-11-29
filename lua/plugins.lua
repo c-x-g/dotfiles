@@ -38,6 +38,9 @@ return require('packer').startup(function()
     -- go lsp
     use 'fatih/vim-go'
 
+    -- java lsp
+    use 'mfussenegger/nvim-jdtls'
+
     -- syntax parser
     use 'nvim-treesitter/nvim-treesitter'
 

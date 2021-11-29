@@ -44,6 +44,9 @@ utils.map('n', '<C-s>', '<C-u>')
 utils.map('n', '<S-Up>', '<C-y>')
 utils.map('n', '<S-Down>', '<C-e>')
 
+-- Java boilerplate 
+utils.map('n', '<leader>sout', 'ccSystem.out.println("");<Left><Left><Left>')
+
 -- local opts = {
 --     noremap = true,
 --     silent = true
