@@ -1,4 +1,5 @@
 require('settings')
+require('location_handler')
 require('keybindings')
 
 require('plugins')

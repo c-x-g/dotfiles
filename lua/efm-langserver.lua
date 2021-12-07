@@ -21,10 +21,10 @@ require'lspconfig'.efm.setup {
                     lintFormats = {'%f(%l,%c): %tarning %m', '%f(%l,%c): %rror %m'}
                 }
             },
-            python = {
-                formatCommand = 'black --quiet -',
-                formatStdin = true
-            }
+--             python = {
+--                 formatCommand = 'black --quiet -',
+--                 formatStdin = true
+--            }
         }
     }
 }

@@ -9,10 +9,7 @@ require'diffview'.setup {
         folder_closed = '',
         folder_open = ''
     },
-    signs = {
-        fold_closed = '',
-        fold_open = ''
-    },
+    signs = {fold_closed = '', fold_open = ''},
     file_panel = {
         position = 'left', -- One of 'left', 'right', 'top', 'bottom'
         width = 35, -- Only applies when position is 'left' or 'right'
@@ -93,9 +90,6 @@ require'diffview'.setup {
             ['<leader>e'] = cb('focus_files'),
             ['<leader>b'] = cb('toggle_files')
         },
-        option_panel = {
-            ['<tab>'] = cb('select'),
-            ['q'] = cb('close')
-        }
+        option_panel = {['<tab>'] = cb('select'), ['q'] = cb('close')}
     }
 }
