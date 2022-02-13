@@ -6,6 +6,7 @@ local cmd = vim.cmd
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
+cmd 'set clipboard+=unnamedplus'
 
 -- set the colorscheme
 cmd 'colorscheme gruvbox'
@@ -51,10 +52,11 @@ vim.opt.shortmess = vim.opt.shortmess + 'A'
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- autoformat file types on save
+-- call formatting_seq_sync instead of formatting_sync if there are multiple language servers, format based on the first one
 cmd([[
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 100, {'efm', 'sumneko_lua'})
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
 ]])
 
 -- vim.api.nvim_exec([[

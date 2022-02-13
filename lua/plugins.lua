@@ -104,11 +104,7 @@ return require('packer').startup(function()
 
     -- Lazy loading:
     -- Load on specific commands
-    use {
-        'tpope/vim-dispatch',
-        opt = true,
-        cmd = {'Dispatch', 'Make', 'Focus', 'Start'}
-    }
+    use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 
     -- You can specify rocks in isolation
     use_rocks 'penlight'

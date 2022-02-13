@@ -1,15 +1,13 @@
 -- autoformatter
 require'lspconfig'.efm.setup {
-    init_options = {
-        documentFormatting = true
-    },
+    init_options = {documentFormatting = true},
     filetypes = {'lua', 'py'},
     settings = {
         rootMarkers = {'.git/'},
         languages = {
             lua = {
                 {
-                    formatCommand = 'lua-format -i --no-keep-simple-function-one-line --double-quote-to-single-quote --no-break-after-operator --column-limit=150 --break-after-table-lb --indent-width=4 ',
+                    formatCommand = 'lua-format -i --no-keep-simple-function-one-line --double-quote-to-single-quote --no-break-after-operator --column-limit=250 --break-after-table-lb --indent-width=4 ',
                     formatStdin = true
                 }
             },
@@ -20,11 +18,11 @@ require'lspconfig'.efm.setup {
                     lintStdin = true,
                     lintFormats = {'%f(%l,%c): %tarning %m', '%f(%l,%c): %rror %m'}
                 }
-            },
---             python = {
---                 formatCommand = 'black --quiet -',
---                 formatStdin = true
---            }
+            }
+            --             python = {
+            --                 formatCommand = 'black --quiet -',
+            --                 formatStdin = true
+            --            }
         }
     }
 }
