@@ -7,6 +7,7 @@ local cmd = vim.cmd
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 cmd 'set clipboard+=unnamedplus'
+cmd 'set guicursor=n-v-i:blinkon5'
 
 -- set the colorscheme
 cmd 'colorscheme gruvbox'
@@ -15,7 +16,6 @@ cmd 'colorscheme gruvbox'
 -- cmd 'colorscheme tokyonight'
 -- vim.o.background = 'light'
 -- vim.g.tokyonnight_style = 'day'
-
 utils.opt('b', 'expandtab', true)
 utils.opt('b', 'shiftwidth', indent)
 utils.opt('b', 'smartindent', true)
@@ -23,6 +23,7 @@ utils.opt('b', 'tabstop', indent)
 utils.opt('o', 'hidden', true)
 utils.opt('o', 'ignorecase', true)
 utils.opt('w', 'number', true)
+utils.opt('w', 'relativenumber', true)
 -- utils.opt('o', 'termguicolors', true)
 utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
@@ -53,11 +54,36 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- autoformat file types on save
 -- call formatting_seq_sync instead of formatting_sync if there are multiple language servers, format based on the first one
+-- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
 cmd([[
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
 autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 100, {'efm', 'sumneko_lua'})
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
+autocmd BufWritePre *.vue lua vim.lsp.buf.formatting_seq_sync(nil, 1000, {'volar'})
 ]])
+
+function autoformat()
+    vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
+end
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre", {
+    pattern = {
+        "*.rs"
+    },
+    callback = function() autoformat() end
+}
+)
+
+-- COME BACK TO THIS LATER IF A VERSION IS SUPPORTED
+-- vim.api.nvim_create_autocmd("BufWritePre", { command = 'lua vim.lsp.buf.formatting_seq_sync(nil, 100, {"efm", "sumneko_lua"})', group = "*.lua" })
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = 'lua',
+--     callback = function()
+--         vim.schedule(function()
+--             print("Hey, we got called")
+--         end)
+--     end,
+-- })
 
 -- vim.api.nvim_exec([[
 -- augroup FormatAutogroup
@@ -65,4 +91,3 @@ autocmd BufWritePre *.py lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
 --   autocmd BufWritePost *.js,*.go FormatWrite
 -- augroup END
 -- ]], true)
-

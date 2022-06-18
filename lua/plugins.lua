@@ -2,6 +2,8 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
+local packer = require("packer")
+local use = packer.use
 
 return require('packer').startup(function()
     -- Packer can manage itself
@@ -41,18 +43,34 @@ return require('packer').startup(function()
     -- java lsp
     use 'mfussenegger/nvim-jdtls'
 
+    -- vue lsp
+    -- installed vue-language-server from AUR using provider volar-server-bin which works
+
+    -- python lsp
+    -- installed python-lsp-server from AUR which works as expected
+
     -- syntax parser
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     -- autoclose plugin
-    use 'windwp/nvim-autopairs'
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
     -- lua completion
     use 'nvim-lua/completion-nvim'
 
+    -- lua snippets
+    use 'L3MON4D3/LuaSnip'
+
     -- hrsh7th packages
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/vim-vsnip'
 
@@ -89,14 +107,14 @@ return require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require'nvim-tree'.setup {}
+            require 'nvim-tree'.setup {}
         end
     }
 
     -- Use dependency and run lua function after load
     use {
         'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('gitsigns').setup()
         end
@@ -104,10 +122,10 @@ return require('packer').startup(function()
 
     -- Lazy loading:
     -- Load on specific commands
-    use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+    use { 'tpope/vim-dispatch', opt = true, cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } }
 
     -- You can specify rocks in isolation
     use_rocks 'penlight'
-    use_rocks {'lua-resty-http', 'lpeg'}
+    use_rocks { 'lua-resty-http', 'lpeg' }
 
 end)

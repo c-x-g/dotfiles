@@ -16,6 +16,16 @@ utils.map('n', '<leader>nt', ':tabnew<CR>')
 utils.map('n', '<leader><Left>', ':tabl<CR>')
 utils.map('n', '<leader><Right>', ':tabr<CR>')
 
+-- don't copy to clipboard
+utils.map('n', 'nc', '"_')
+
+
+-- replace with paste
+utils.map('n', 'vp', 'viwp')
+
+-- source the current buffer's filename
+utils.map('n', '<leader>so', ':so %<CR>')
+
 -- jump between tabs
 utils.map('n', '<leader>1', '1gt')
 utils.map('n', '<leader>2', '2gt')
@@ -45,7 +55,7 @@ utils.map('n', '<S-Up>', '<C-y>')
 utils.map('n', '<S-Down>', '<C-e>')
 
 -- Java boilerplate
-utils.map('n', '<leader>sout', 'ccSystem.out.println("");<Left><Left><Left>')
+-- utils.map('n', '<leader>sout', 'ccSystem.out.println("");<Left><Left><Left>')
 
 -- local opts = {
 --     noremap = true,
@@ -69,4 +79,3 @@ utils.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 -- utils.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 -- utils.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 -- -- utils.map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-
