@@ -4,13 +4,19 @@ require('denite')
 local indent = 4
 local cmd = vim.cmd
 
+local normal_color_scheme = 'gruvbox'
+-- local insert_color_scheme = 'gruvbox'
+
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 cmd 'set clipboard+=unnamedplus'
-cmd 'set guicursor=n-v-i:blinkon5'
+
+-- set cursor to blink and cursor shape to be thin line in insert + visual modes
+cmd 'set guicursor=v-i:ver80-blinkon5'
+cmd 'set autoindent'
 
 -- set the colorscheme
-cmd 'colorscheme gruvbox'
+cmd('colorscheme ' .. normal_color_scheme)
 -- cmd 'colorscheme nord'
 
 -- cmd 'colorscheme tokyonight'
@@ -54,26 +60,44 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- autoformat file types on save
 -- call formatting_seq_sync instead of formatting_sync if there are multiple language servers, format based on the first one
--- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
-cmd([[
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_seq_sync(nil, 100, {'efm', 'sumneko_lua'})
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_seq_sync(nil, 1000)
-autocmd BufWritePre *.vue lua vim.lsp.buf.formatting_seq_sync(nil, 1000, {'volar'})
-]])
 
-function autoformat()
-    vim.lsp.buf.formatting_seq_sync(nil, 1000, nil)
+-- format various file types with efm-langserver configured
+local autoformat = function()
+  vim.lsp.buf.formatting_seq_sync(nil, 1000, {'efm'})
 end
 
-vim.api.nvim_create_autocmd(
-    "BufWritePre", {
-    pattern = {
-        "*.rs"
-    },
-    callback = function() autoformat() end
-}
-)
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = {
+    '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
+    '*.yaml', '*.yml'
+  },
+  callback = function()
+    autoformat()
+  end
+})
 
+-- local change_color_scheme = function(style)
+--   cmd('colorscheme ' .. style)
+-- end
+-- vim.api.nvim_create_autocmd('InsertEnter', {
+--   pattern = {
+--     '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
+--     '*.yaml', '*.yml'
+--   },
+--   callback = function()
+--     change_color_scheme(insert_color_scheme)
+--   end
+-- })
+--
+-- vim.api.nvim_create_autocmd('InsertLeave', {
+--   pattern = {
+--     '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
+--     '*.yaml', '*.yml'
+--   },
+--   callback = function()
+--     change_color_scheme(normal_color_scheme)
+--   end
+-- })
 -- COME BACK TO THIS LATER IF A VERSION IS SUPPORTED
 -- vim.api.nvim_create_autocmd("BufWritePre", { command = 'lua vim.lsp.buf.formatting_seq_sync(nil, 100, {"efm", "sumneko_lua"})', group = "*.lua" })
 -- vim.api.nvim_create_autocmd("FileType", {

@@ -3,8 +3,25 @@ local utils = require('utils')
 -- remap leader key from \ to spacebar
 vim.g.mapleader = ' '
 
+-- clear a line up to the first character in the line
+vim.keymap.set({'i'}, '<C-d>', '<leader><esc>d^i',
+               {silent = true})
+
+-- jump to first character in line
+vim.keymap.set({'i'}, '<C-s>', '<esc>^i', {silent = true})
+
+--  find word
+vim.keymap.set({'i'}, '<C-f>', '<esc>:/', {silent = true})
+
+vim.keymap.set({'i'}, '<C-Up>', '<esc>ggi', {silent = true})
+vim.keymap
+    .set({'i'}, '<C-Down>', '<esc>Gi', {silent = true})
+
+-- use the home/end keys to navigate to the beginning and end of line
+
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
-utils.map('n', '<leader>p', ':Denite file/rec -start-filter<CR>')
+utils.map('n', '<leader>p',
+          ':Denite file/rec -start-filter<CR>')
 utils.map('n', '<leader>s', ':Denite grep -start-filter<CR>')
 utils.map('n', '<leader>e', ':NvimTreeToggle<CR>')
 utils.map('n', '<leader>sv', ':source $MYVIMRC<CR>')
@@ -19,6 +36,8 @@ utils.map('n', '<leader><Right>', ':tabr<CR>')
 -- don't copy to clipboard
 utils.map('n', 'nc', '"_')
 
+-- view messages (logs)
+utils.map('n', '<leader>m', ':messages<CR>')
 
 -- replace with paste
 utils.map('n', 'vp', 'viwp')
@@ -79,3 +98,4 @@ utils.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 -- utils.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 -- utils.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 -- -- utils.map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+--

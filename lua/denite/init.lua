@@ -18,7 +18,8 @@ vim.api.nvim_call_function('denite#custom#var', { 'grep', 'command', { 'rg' } })
 --    --hidden:   Search hidden directories and files
 --    --heading:  Show the file name above clusters of matches from each file
 --    --S:        Search case insensitively if the pattern is all lowercase
-vim.api.nvim_call_function('denite#custom#var', { 'grep', 'default_opts', { '--hidden', '--vimgrep', '--heading', '-S' } })
+vim.api.nvim_call_function('denite#custom#var',
+    { 'grep', 'default_opts', { '--hidden', '--vimgrep', '--heading', '-S' } })
 
 -- Recommended defaults for ripgrep via Denite docs
 vim.api.nvim_call_function('denite#custom#var', { 'grep', 'recursive_opts', {} })
@@ -53,7 +54,9 @@ denite_options['default']['winheight'] = 40
 denite_options['default']['winwidth'] = vim.o.columns
 
 for e_key, _ in pairs(denite_options) do
-    for i_key, i_value in pairs(denite_options[e_key]) do vim.api.nvim_call_function('denite#custom#option', { e_key, i_key, i_value }) end
+    for i_key, i_value in pairs(denite_options[e_key]) do vim.api.nvim_call_function('denite#custom#option',
+            { e_key, i_key, i_value })
+    end
 end
 
 cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <CR> denite#do_map(\'do_action\', \'tabopen\')')
@@ -65,12 +68,12 @@ cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <Space> denite#do_m
 -- cmd('autocmd FileType denite nnoremap <silent><buffer><expr> <C-x> denite#do_map(\'split\').\'j\'')
 
 -- show line numbers in file search results
-cmd('autocmd FileType denite setlocal number')
+cmd('autocmd FileType denite set rnu')
 
 -- map the down arrow key to a function that quits the Denite filter buffer to go directly into the search results
 function SetDeniteFilterQuit()
-    cmd('imap <silent><buffer> <Down> <Plug>(denite_filter_update)')
-    cmd('imap <silent><buffer> <CR> <Plug>(denite_filter_update)')
+    cmd('inoremap <silent><buffer> <Down> <Plug>(denite_filter_update)')
+    cmd('inoremap <silent><buffer> <CR> <Plug>(denite_filter_update)')
 end
 
 cmd('autocmd FileType denite-filter lua SetDeniteFilterQuit()')

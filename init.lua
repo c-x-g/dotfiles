@@ -1,14 +1,16 @@
-require('settings')
+require('plugins')
+require('lspconfig-configurations')
 require('location_handler')
 require('keybindings')
 
-require('plugins')
 require('border')
 -- require('rust-analyzer')
-require('luasnips')
+-- require('luasnips')
+require('luasnippets')
 require('completion-config')
-require('autopairs')
 
+require('settings')
+-- require('autopairs')
 -- lsp dependencies
 require('lua-lsp')
 require('go-lsp')
@@ -16,12 +18,12 @@ require('typescript-lsp')
 require('python-lsp')
 require('java-lsp')
 require('vue-lsp')
--- require('lspconfig-configurations')
 
 -- efm-langserver; the autoformatter
 require('efm-langserver')
 
-require('treesitter')
+-- require('treesitter')
 require('autoformatter')
 
 require('sindrets-diffview')
+require('autopairs')
