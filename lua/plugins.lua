@@ -21,6 +21,15 @@ return require('packer').startup(function()
   -- nvim-lspconfig
   use 'neovim/nvim-lspconfig'
 
+  -- telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/plenary.nvim'}}
+  }
+
+  -- telescope fzy
+  use 'nvim-telescope/telescope-fzy-native.nvim'
+
   -- denite
   use 'Shougo/denite.nvim'
 
@@ -122,6 +131,9 @@ return require('packer').startup(function()
 
   -- nord-vim theme
   use 'arcticicestudio/nord-vim'
+
+  -- vs code
+  use 'Mofiqul/vscode.nvim'
 
   -- aurora theme
   use 'ray-x/aurora'

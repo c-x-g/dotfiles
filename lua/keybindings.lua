@@ -18,7 +18,6 @@ vim.keymap
     .set({'i'}, '<C-Down>', '<esc>Gi', {silent = true})
 
 -- use the home/end keys to navigate to the beginning and end of line
-
 utils.map('n', '<C-l>', '<cmd>noh<CR>')
 utils.map('n', '<leader>p',
           ':Denite file/rec -start-filter<CR>')

@@ -4,11 +4,9 @@ require('denite')
 local indent = 4
 local cmd = vim.cmd
 
-local normal_color_scheme = 'gruvbox'
+local normal_color_scheme = 'vscode'
 -- local insert_color_scheme = 'gruvbox'
 
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
 cmd 'set clipboard+=unnamedplus'
 
 -- set cursor to blink and cursor shape to be thin line in insert + visual modes
@@ -69,7 +67,7 @@ end
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = {
     '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
-    '*.yaml', '*.yml'
+    '*.yaml', '*.yml', '*.java'
   },
   callback = function()
     autoformat()

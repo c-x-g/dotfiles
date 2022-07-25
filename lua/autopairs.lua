@@ -8,13 +8,32 @@ local cmp = require('cmp')
 
 -- npairs.config.map_cr = false
 -- print(vim.inspect(npairs))
+
+-- if quotes are inserted between the html tags, do not trigger duplication
+function check_quotes(opts)
+  print(opts.text)
+  print(vim.api.nvim_get_current_buf())
+  if string.find(opts.text, "^M") then print("FOUND") end
+  if string.find(opts.text, "\"") then return "\"" end
+  if string.find(opts.text, "'") then return "'" end
+  return nil
+end
+
 npairs.setup {map_cr = false, enable_afterquote = false}
 npairs.add_rules({
   Rule('^ *<%a*>$', '</>'):use_regex(true):replace_endpair(
       function(opts)
+        local is_quote = check_quotes(opts)
+        if is_quote ~= nil then return "\"" end
         return '</'
                    .. string.sub(
                        string.gsub(opts.text, '%s+', ''), 2)
-      end), -- modify the behavior of parentheses in rust and lua files
-  Rule('(', '<CR><Esc>O'):use_key('<CR>')
+      end)
+  -- Rule('(', ')'):use_key('<CR>'):replace_endpair(function(
+  --    opts)
+  --  print(opts.text)
+  --  local is_quote = check_quotes(opts)
+  --  if is_quote ~= nil then return is_quote end
+  --  return '<CR><Esc>O'
+  -- end)
 })
