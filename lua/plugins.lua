@@ -6,169 +6,210 @@ local packer = require('packer')
 local use = packer.use
 
 return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  -- Fugitive; git integration with nvim
-  use 'tpope/vim-fugitive'
+    -- lualine
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
-  -- sindrets; tool that easily navigates git file changes
-  use 'sindrets/diffview.nvim'
+    -- Fugitive; git integration with nvim
+    use 'tpope/vim-fugitive'
 
-  -- Signify
-  use 'mhinz/vim-signify'
+    -- sindrets; tool that easily navigates git file changes
+    use 'sindrets/diffview.nvim'
 
-  -- nvim-lspconfig
-  use 'neovim/nvim-lspconfig'
+    -- Signify
+    use 'mhinz/vim-signify'
 
-  -- telescope
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim'}}
-  }
+    -- nvim-lspconfig
+    use 'neovim/nvim-lspconfig'
 
-  -- telescope fzy
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+    -- telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
-  -- denite
-  use 'Shougo/denite.nvim'
+    -- telescope fzy
+    use 'nvim-telescope/telescope-fzy-native.nvim'
 
-  -- defx
-  use 'Shougo/defx.nvim'
+    -- denite
+    use 'Shougo/denite.nvim'
 
-  -- vim-floaterm borders
-  use 'delphinus/denite-floaterm'
-  use 'voldikss/vim-floaterm'
+    -- defx
+    use 'Shougo/defx.nvim'
 
-  -- rust lsp
-  use 'simrat39/rust-tools.nvim'
+    -- vim-floaterm borders
+    use 'delphinus/denite-floaterm'
+    use 'voldikss/vim-floaterm'
 
-  -- lua lsp
-  use 'sumneko/lua-language-server'
+    -- rust lsp
+    use 'simrat39/rust-tools.nvim'
 
-  -- go lsp
-  use 'fatih/vim-go'
+    -- lua lsp
+    use 'sumneko/lua-language-server'
 
-  -- java lsp
-  use 'mfussenegger/nvim-jdtls'
+    -- go lsp
+    use 'fatih/vim-go'
 
-  -- efm-langserver
-  use 'mattn/efm-langserver'
+    -- java lsp
+    use 'mfussenegger/nvim-jdtls'
 
-  -- vue lsp
-  -- installed vue-language-server from AUR using provider volar-server-bin which works
+    -- efm-langserver
+    use 'mattn/efm-langserver'
 
-  -- python lsp
-  -- installed python-lsp-server from AUR which works as expected
+    -- vue lsp
+    -- installed vue-language-server from AUR using provider volar-server-bin which works
 
-  -- syntax parser
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    -- python lsp
+    -- installed python-lsp-server from AUR which works as expected
 
-  -- autoclose plugin
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {}
-    end
-  }
+    -- syntax parser
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  -- lua completion
-  use 'nvim-lua/completion-nvim'
+    -- autoclose plugin
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup {}
+        end
+    }
 
-  -- hrsh7th packages
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-nvim-lua'
-  -- use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/vim-vsnip'
-  -- use 'saadparwaiz1/cmp_luasnip'
+    -- lua completion
+    use 'nvim-lua/completion-nvim'
 
-  -- lua snippets
-  -- use 'L3MON4D3/LuaSnip'
+    -- hrsh7th packages
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-nvim-lua'
+    -- use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/vim-vsnip'
+    -- use 'saadparwaiz1/cmp_luasnip'
 
-  use {'L3MON4D3/LuaSnip'}
-  use {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require'cmp'.setup {
-        snippet = {
-          expand = function(args)
-            require'luasnip'.lsp_expand(args.body)
-          end
-        },
+    -- lua snippets
+    -- use 'L3MON4D3/LuaSnip'
 
-        sources = {
-          {name = 'luasnip'}
-          -- more sources
+    use { 'L3MON4D3/LuaSnip' }
+    use {
+        'hrsh7th/nvim-cmp',
+        config = function()
+            require 'cmp'.setup {
+                snippet = {
+                    expand = function(args)
+                        require 'luasnip'.lsp_expand(args.body)
+                    end
+                },
+
+                sources = {
+                    { name = 'luasnip' }
+                    -- more sources
+                }
+            }
+        end
+    }
+    use { 'saadparwaiz1/cmp_luasnip' }
+
+    -- nerdtree
+    --    use 'preservim/nerdtree'
+
+    -- colorizer
+    use 'norcalli/nvim-colorizer.lua'
+
+    -- formatter
+    use 'mhartington/formatter.nvim'
+
+    -- Which Key
+    use 'liuchengxu/vim-which-key'
+
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  Color Schemes
+    -- --------------------------------------------------------------------------------------------------------------
+
+    -- tokyonight theme
+    use 'folke/tokyonight.nvim'
+
+    -- gruvbox theme
+    use 'morhetz/gruvbox'
+
+    -- nord-vim theme
+    use 'arcticicestudio/nord-vim'
+
+    -- vs code
+    use 'Mofiqul/vscode.nvim'
+
+    -- aurora theme
+    use 'ray-x/aurora'
+
+    -- nightfox
+    use 'EdenEast/nightfox.nvim'
+
+    -- nvim-tree (file explorer)
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require 'nvim-tree'.setup {}
+        end
+    }
+
+    -- Use dependency and run lua function after load
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
+    -- Lazy loading:
+    -- Load on specific commands
+    use {
+        'tpope/vim-dispatch',
+        opt = true,
+        cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
+    }
+
+    -- You can specify rocks in isolation
+    -- use_rocks 'penlight'
+    -- use_rocks { 'lua-resty-http', 'lpeg' }
+
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  Testing
+    -- --------------------------------------------------------------------------------------------------------------
+    use 'antoinemadec/FixCursorHold.nvim'
+
+    use {
+        'nvim-neotest/neotest',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'antoinemadec/FixCursorHold.nvim'
         }
-      }
-    end
-  }
-  use {'saadparwaiz1/cmp_luasnip'}
+    }
 
-  -- nerdtree
-  --    use 'preservim/nerdtree'
+    use 'nvim-neotest/neotest-go'
+    use 'nvim-neotest/neotest-python'
+    use 'rouge8/neotest-rust'
 
-  -- colorizer
-  use 'norcalli/nvim-colorizer.lua'
+    -- jest isn't ready yet
+    -- use 'haydenmeade/neotest-jest'
 
-  -- formatter
-  use 'mhartington/formatter.nvim'
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  Debugger
+    -- --------------------------------------------------------------------------------------------------------------
 
-  -- Which Key
-  use 'liuchengxu/vim-which-key'
-
-  -- --------------------------------------------------------------------------------------------------------------
-  --                                                  Color Schemes
-  -- --------------------------------------------------------------------------------------------------------------
-
-  -- tokyonight theme
-  use 'folke/tokyonight.nvim'
-
-  -- gruvbox theme
-  use 'morhetz/gruvbox'
-
-  -- nord-vim theme
-  use 'arcticicestudio/nord-vim'
-
-  -- vs code
-  use 'Mofiqul/vscode.nvim'
-
-  -- aurora theme
-  use 'ray-x/aurora'
-
-  -- nightfox
-  use "EdenEast/nightfox.nvim"
-
-  -- nvim-tree (file explorer)
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require'nvim-tree'.setup {}
-    end
-  }
-
-  -- Use dependency and run lua function after load
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-
-  -- Lazy loading:
-  -- Load on specific commands
-  use {
-    'tpope/vim-dispatch',
-    opt = true,
-    cmd = {'Dispatch', 'Make', 'Focus', 'Start'}
-  }
-
-  -- You can specify rocks in isolation
-  -- use_rocks 'penlight'
-  -- use_rocks { 'lua-resty-http', 'lpeg' }
+    use 'sakhnik/nvim-gdb'
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = { 'mfussenegger/nvim-dap' }
+    }
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
 
 end)

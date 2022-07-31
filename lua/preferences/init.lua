@@ -1,5 +1,5 @@
 local utils = require('utils')
-require('denite')
+require('preferences/keybindings')
 
 local indent = 4
 local cmd = vim.cmd
@@ -8,6 +8,9 @@ local normal_color_scheme = 'vscode'
 -- local insert_color_scheme = 'gruvbox'
 
 cmd 'set clipboard+=unnamedplus'
+
+-- short for packadd termdebug
+cmd 'pa termdebug'
 
 -- set cursor to blink and cursor shape to be thin line in insert + visual modes
 cmd 'set guicursor=v-i:ver80-blinkon5'
@@ -64,15 +67,16 @@ local autoformat = function()
   vim.lsp.buf.formatting_seq_sync(nil, 1000, {'efm'})
 end
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = {
-    '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
-    '*.yaml', '*.yml', '*.java'
-  },
-  callback = function()
-    autoformat()
-  end
-})
+vim.api.nvim_create_autocmd(
+    'BufWritePre', {
+      pattern = {
+        '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
+        '*.yaml', '*.yml', '*.java'
+      },
+      callback = function()
+        autoformat()
+      end
+    })
 
 -- local change_color_scheme = function(style)
 --   cmd('colorscheme ' .. style)
