@@ -9,7 +9,7 @@ local normal_color_scheme = 'vscode'
 
 cmd 'set clipboard+=unnamedplus'
 
--- short for packadd termdebug
+-- short for packadd termdebug this is related to rust debugging
 cmd 'pa termdebug'
 
 -- set cursor to blink and cursor shape to be thin line in insert + visual modes
@@ -64,19 +64,19 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- format various file types with efm-langserver configured
 local autoformat = function()
-  vim.lsp.buf.formatting_seq_sync(nil, 1000, {'efm'})
+    vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
 end
 
 vim.api.nvim_create_autocmd(
     'BufWritePre', {
-      pattern = {
+    pattern = {
         '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
         '*.yaml', '*.yml', '*.java'
-      },
-      callback = function()
+    },
+    callback = function()
         autoformat()
-      end
-    })
+    end
+})
 
 -- local change_color_scheme = function(style)
 --   cmd('colorscheme ' .. style)

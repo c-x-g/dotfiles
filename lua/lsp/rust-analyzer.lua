@@ -1,9 +1,9 @@
 -- local nvim_lsp = require 'lspconfig'
--- 
+--
 -- local on_attach = function(client)
 --     require'completion'.on_attach(client)
 -- end
--- 
+--
 -- nvim_lsp.rust_analyzer.setup({
 --     on_attach = on_attach,
 --     settings = {['rust-analyzer'] = {assist = {importGranularity = 'module', importPrefix = 'by_self'}, cargo = {loadOutDirsFromCheck = true}, procMacro = {enable = true}, checkOnSave = {command = 'cargo fmt'}}}
@@ -31,10 +31,10 @@ local opts = {
             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
             ['rust-analyzer'] = {
                 -- enable clippy on save
-                -- checkOnSave = {
-                --    command = 'clippy'
-                -- }
-                diagnostics = {disabled = 'inactive-code'}
+                checkOnSave = {
+                    command = 'clippy'
+                },
+                -- diagnostics = { disabled = 'inactive-code' }
             }
         }
     }

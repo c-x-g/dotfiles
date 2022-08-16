@@ -15,12 +15,6 @@ return require('packer').startup(function()
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    -- Fugitive; git integration with nvim
-    use 'tpope/vim-fugitive'
-
-    -- sindrets; tool that easily navigates git file changes
-    use 'sindrets/diffview.nvim'
-
     -- Signify
     use 'mhinz/vim-signify'
 
@@ -46,26 +40,10 @@ return require('packer').startup(function()
     use 'delphinus/denite-floaterm'
     use 'voldikss/vim-floaterm'
 
-    -- rust lsp
-    use 'simrat39/rust-tools.nvim'
-
-    -- lua lsp
-    use 'sumneko/lua-language-server'
-
-    -- go lsp
-    use 'fatih/vim-go'
-
-    -- java lsp
-    use 'mfussenegger/nvim-jdtls'
 
     -- efm-langserver
     use 'mattn/efm-langserver'
 
-    -- vue lsp
-    -- installed vue-language-server from AUR using provider volar-server-bin which works
-
-    -- python lsp
-    -- installed python-lsp-server from AUR which works as expected
 
     -- syntax parser
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -125,6 +103,56 @@ return require('packer').startup(function()
     -- Which Key
     use 'liuchengxu/vim-which-key'
 
+
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  Git Tools
+    -- --------------------------------------------------------------------------------------------------------------
+
+    -- Fugitive; git integration with nvim
+    use 'tpope/vim-fugitive'
+
+    -- sindrets; tool that easily navigates git file changes
+    use 'sindrets/diffview.nvim'
+
+    -- Use dependency and run lua function after load
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
+    -- Lazy loading:
+    -- Load on specific commands
+    use {
+        'tpope/vim-dispatch',
+        opt = true,
+        cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
+    }
+
+    -- --------------------------------------------------------------------------------------------------------------
+    --                                                  LSPs
+    -- --------------------------------------------------------------------------------------------------------------
+
+    -- rust lsp
+    use 'simrat39/rust-tools.nvim'
+
+    -- lua lsp
+    use 'sumneko/lua-language-server'
+
+    -- go lsp
+    use 'fatih/vim-go'
+
+    -- java lsp
+    use 'mfussenegger/nvim-jdtls'
+
+    -- vue lsp
+    -- installed vue-language-server from AUR using provider volar-server-bin which works
+
+    -- python lsp
+    -- installed python-lsp-server from AUR which works as expected
+
     -- --------------------------------------------------------------------------------------------------------------
     --                                                  Color Schemes
     -- --------------------------------------------------------------------------------------------------------------
@@ -155,27 +183,6 @@ return require('packer').startup(function()
             require 'nvim-tree'.setup {}
         end
     }
-
-    -- Use dependency and run lua function after load
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require('gitsigns').setup()
-        end
-    }
-
-    -- Lazy loading:
-    -- Load on specific commands
-    use {
-        'tpope/vim-dispatch',
-        opt = true,
-        cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
-    }
-
-    -- You can specify rocks in isolation
-    -- use_rocks 'penlight'
-    -- use_rocks { 'lua-resty-http', 'lpeg' }
 
     -- --------------------------------------------------------------------------------------------------------------
     --                                                  Testing
