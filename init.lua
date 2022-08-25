@@ -1,29 +1,36 @@
 require('plugins')
 require('lspconfig-configurations')
 require('location_handler')
-require('keybindings')
+-- require('keybindings')
 
 require('border')
--- require('rust-analyzer')
--- require('luasnips')
+require('_lualine')
 require('luasnippets')
 require('completion-config')
 
-require('settings')
--- require('autopairs')
--- lsp dependencies
-require('lua-lsp')
-require('go-lsp')
-require('typescript-lsp')
-require('python-lsp')
-require('java-lsp')
-require('vue-lsp')
+require('preferences')
+require('denite')
 
 -- efm-langserver; the autoformatter
 require('efm-langserver')
 
--- require('treesitter')
-require('autoformatter')
+require('treesitter')
+-- require('autoformatter')
 
 require('sindrets-diffview')
-require('autopairs')
+
+-- includes autopairs, possibly more later
+require('format')
+
+require('_telescope')
+
+-- included in lsp folder
+require('lsp')
+
+
+-- for facilitating unit tests
+require('testing')
+
+
+-- debugging
+require('_debug')
