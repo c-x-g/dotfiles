@@ -5,7 +5,7 @@ require('location_handler')
 
 require('border')
 require('_lualine')
-require('luasnippets')
+require('luasnips')
 require('completion-config')
 
 require('preferences')
