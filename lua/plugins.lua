@@ -69,9 +69,11 @@ return require('packer').startup(function()
     -- use 'saadparwaiz1/cmp_luasnip'
 
     -- lua snippets
-    -- use 'L3MON4D3/LuaSnip'
 
-    use { 'L3MON4D3/LuaSnip' }
+    use { 'L3MON4D3/LuaSnip',
+        after = 'nvim-cmp',
+        config = function() require('config.snippets') end
+    }
     use {
         'hrsh7th/nvim-cmp',
         config = function()
