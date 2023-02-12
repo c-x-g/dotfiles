@@ -16,6 +16,7 @@ cmd 'pa termdebug'
 cmd 'set guicursor=v-i:ver80-blinkon5'
 cmd 'set autoindent'
 
+
 -- set the colorscheme
 cmd('colorscheme ' .. normal_color_scheme)
 -- cmd 'colorscheme nord'
@@ -64,7 +65,8 @@ cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- format various file types with efm-langserver configured
 local autoformat = function()
-    vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
+    -- vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
+    vim.lsp.buf.format(nil, 1000, { 'efm' })
 end
 
 vim.api.nvim_create_autocmd(
@@ -77,6 +79,21 @@ vim.api.nvim_create_autocmd(
         autoformat()
     end
 })
+
+
+vim.api.nvim_create_autocmd(
+    {'BufNewFile,BufRead'}, {
+    pattern = {
+        '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
+        '*.yaml', '*.yml', '*.java'
+    },
+    command = "setlocal formatoptions-=cro"
+})
+
+
+-- -- disable comment continuation on subsequent lines
+-- vim.cmd 'set formatoptions-=cro'
+
 
 -- local change_color_scheme = function(style)
 --   cmd('colorscheme ' .. style)
@@ -117,3 +134,6 @@ vim.api.nvim_create_autocmd(
 --   autocmd BufWritePost *.js,*.go FormatWrite
 -- augroup END
 -- ]], true)
+-- ]], true)
+
+

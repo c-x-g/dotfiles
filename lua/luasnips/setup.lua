@@ -1,7 +1,7 @@
 -- ---------------------------------------------------------------------------------------------
 --                                          Imports
 -- ---------------------------------------------------------------------------------------------
-ls = require "luasnip"
+ls = require("luasnip")
 types = require "luasnip.util.types"
 rep = require("luasnip.extras").rep
 fmt = require("luasnip.extras.fmt").fmt

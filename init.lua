@@ -5,11 +5,11 @@ require('location_handler')
 
 require('border')
 require('_lualine')
-require('luasnips')
-require('completion-config')
+-- require('luasnips')
+-- require('completion-config')
 
 require('preferences')
-require('denite')
+-- require('denite')
 
 -- efm-langserver; the autoformatter
 require('efm-langserver')

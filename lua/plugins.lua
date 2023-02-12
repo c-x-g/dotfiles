@@ -70,7 +70,9 @@ return require('packer').startup(function()
 
     -- lua snippets
 
+
     use { 'L3MON4D3/LuaSnip',
+        tag = "v<CurrentMajor>.*",
         after = 'nvim-cmp',
         config = function() require('config.snippets') end
     }
@@ -211,7 +213,7 @@ return require('packer').startup(function()
     --                                                  Debugger
     -- --------------------------------------------------------------------------------------------------------------
 
-    use 'sakhnik/nvim-gdb'
+    -- use 'sakhnik/nvim-gdb' -- not as useful since it is basically just gdb inside of neovim, no graphical UI to faciliate debugging
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'
     use {

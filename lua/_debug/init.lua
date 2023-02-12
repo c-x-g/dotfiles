@@ -1,3 +1,5 @@
+require('_debug/_dap')
 require('_debug/dap-ui')
 require('_debug/dap-keybindings')
+require('_debug/dap-ui-keybindings')
 require('_debug/dap-go')
