@@ -37,7 +37,10 @@ require('telescope').setup {
                 ["<CR>"] = actions.select_tab,
                 ["<C-T>"] = telescope_custom_actions.multi_selection_open_tab
             },
-        }
+        },
+        file_ignore_patterns = {
+            "node_modules",
+        },
     },
     pickers = {
         grep_string = {
@@ -64,6 +67,6 @@ require('telescope').setup {
         --     override_generic_sorter = false,
         --     override_file_sorter = true,
         -- }
-    }
+    },
 }
 require('telescope').load_extension('fzy_native')

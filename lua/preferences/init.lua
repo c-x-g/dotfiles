@@ -1,39 +1,38 @@
-local utils = require('utils')
-require('preferences/keybindings')
+local utils = require("utils")
+require("preferences/keybindings")
 
 local indent = 4
 local cmd = vim.cmd
 
-local normal_color_scheme = 'vscode'
+local normal_color_scheme = "gruvbox"
 -- local insert_color_scheme = 'gruvbox'
 
-cmd 'set clipboard+=unnamedplus'
+cmd "set clipboard+=unnamedplus"
 
 -- short for packadd termdebug this is related to rust debugging
-cmd 'pa termdebug'
+cmd "pa termdebug"
 
 -- set cursor to blink and cursor shape to be thin line in insert + visual modes
-cmd 'set guicursor=v-i:ver80-blinkon5'
-cmd 'set autoindent'
-
+cmd "set guicursor=v-i:ver80-blinkon5"
+cmd "set autoindent"
 
 -- set the colorscheme
-cmd('colorscheme ' .. normal_color_scheme)
+cmd("colorscheme " .. normal_color_scheme)
 -- cmd 'colorscheme nord'
 
 -- cmd 'colorscheme tokyonight'
 -- vim.o.background = 'light'
 -- vim.g.tokyonnight_style = 'day'
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'smartindent', true)
-utils.opt('b', 'tabstop', indent)
-utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', true)
+utils.opt("b", "expandtab", true)
+utils.opt("b", "shiftwidth", indent)
+utils.opt("b", "smartindent", true)
+utils.opt("b", "tabstop", indent)
+utils.opt("o", "hidden", true)
+utils.opt("o", "ignorecase", true)
+utils.opt("w", "number", true)
+utils.opt("w", "relativenumber", true)
 -- utils.opt('o', 'termguicolors', true)
-utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
+utils.opt("o", "completeopt", "menuone,noinsert,noselect")
 
 -- set line numbers in NERDTree
 -- vim.g['NERDTreeShowLineNumbers'] = 1
@@ -45,7 +44,7 @@ utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 -- utils.opt('o', 'previewheight', 50)
 -- utils.opt('o', 'winwidth', vim.o.columns)
 
-vim.opt.shortmess = vim.opt.shortmess + 'A'
+vim.opt.shortmess = vim.opt.shortmess + "A"
 -- local SM = vim.opt.shortmess + 'A'
 -- utils.opt('o', 'shortmess', vim.opt.shortmess..'A')
 -- utils.opt('o', 'scrolloff', 4)
@@ -58,42 +57,36 @@ vim.opt.shortmess = vim.opt.shortmess + 'A'
 -- utils.opt('o', 'clipboard', 'unnamed,unnamedplus')
 
 -- Highlight on yank
-cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+cmd "au TextYankPost * lua vim.highlight.on_yank {on_visual = false}"
 
 -- autoformat file types on save
 -- call formatting_seq_sync instead of formatting_sync if there are multiple language servers, format based on the first one
 
 -- format various file types with efm-langserver configured
 local autoformat = function()
-    -- vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
-    vim.lsp.buf.format(nil, 1000, { 'efm' })
+  -- vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
+  -- vim.lsp.buf.format(nil, 1000, 2)
+  vim.lsp.buf.format({
+    timeout_ms = 1000,
+    name = "efm"
+    -- : id = 1
+  })
 end
 
-vim.api.nvim_create_autocmd(
-    'BufWritePre', {
-    pattern = {
-        '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
-        '*.yaml', '*.yml', '*.java'
-    },
-    callback = function()
-        autoformat()
-    end
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs"},
+  callback = function()
+    autoformat()
+  end
 })
 
-
-vim.api.nvim_create_autocmd(
-    {'BufNewFile,BufRead'}, {
-    pattern = {
-        '*.lua', '*.py', '*.js', '*.ts', '*.vue', '*.rs',
-        '*.yaml', '*.yml', '*.java'
-    },
-    command = "setlocal formatoptions-=cro"
+vim.api.nvim_create_autocmd({"BufNewFile,BufRead"}, {
+  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml", "*.java"},
+  command = "setlocal formatoptions-=cro"
 })
-
 
 -- -- disable comment continuation on subsequent lines
 -- vim.cmd 'set formatoptions-=cro'
-
 
 -- local change_color_scheme = function(style)
 --   cmd('colorscheme ' .. style)
@@ -135,5 +128,3 @@ vim.api.nvim_create_autocmd(
 -- augroup END
 -- ]], true)
 -- ]], true)
-
-

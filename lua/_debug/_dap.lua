@@ -6,18 +6,33 @@ dap.adapters.lldb = {
     name = 'lldb'
 }
 
+    local function getRustExe()
+    local cwd = vim.fn.getcwd()
+    local slashIndex = 0
+    for i = #cwd, 1, -1 do
+        local c = cwd:sub(i, i)
+        -- print(c)
+        if c == '/' then
+            slashIndex = i
+            break
+        end
+    end
+    local exe = string.sub(cwd, slashIndex + 1)
+    return cwd .. '/target/debug/' .. exe
+end
+
 dap.configurations.rust = {
     {
         name = 'Launch',
         type = 'lldb',
         request = 'launch',
         -- program = function()
-        --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'src/main.rs')
+        --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/example')
         -- end,
-        program = "/home/carl/Desktop/my_projects/rust_projects/example/target/debug/example",
+        program = getRustExe(), -- "/home/carl/Desktop/my_projects/rust_projects/example/target/debug/example",
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
-        args = {},
+        args = { 'mandel.png', '1000x750', '-1.20,0.35', '-1.0,0.20' },
 
         -- 💀
         -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:

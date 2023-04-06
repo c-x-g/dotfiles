@@ -143,7 +143,7 @@ return require('packer').startup(function()
     use 'simrat39/rust-tools.nvim'
 
     -- lua lsp
-    use 'sumneko/lua-language-server'
+    use 'LuaLS/lua-language-server'
 
     -- go lsp
     use 'fatih/vim-go'
@@ -222,5 +222,4 @@ return require('packer').startup(function()
     }
     use 'theHamsta/nvim-dap-virtual-text'
     use 'nvim-telescope/telescope-dap.nvim'
-
 end)
