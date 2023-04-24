@@ -73,8 +73,8 @@ local autoformat = function()
   })
 end
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs"},
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.svelte"},
   callback = function()
     autoformat()
   end

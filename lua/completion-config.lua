@@ -10,11 +10,14 @@ end
 
 cmp.setup({
     -- Enable LSP snippets
-    -- snippet = {
-    --     expand = function(args)
-    --         vim.fn["vsnip#anonymous"](args.body)
-    --     end,
-    -- },
+    snippet = {
+        expand = function(args)
+            -- vim.fn["vsnip#anonymous"](args.body)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+    },
     mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -50,16 +53,11 @@ cmp.setup({
             select = false
         })
     },
-    snippet = {
-        expand = function(args)
-            if not luasnip then return end
-            luasnip.lsp_expand(args.body)
-        end
-    },
     -- Installed sources
     sources = {
-        { name = 'nvim_lsp' }, { name = 'nvim_lua' },
-        { name = 'vsnip' }, { name = 'path' }, { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' },
+        { name = 'luasnip' },
         { name = 'buffer', keyword_length = 5 }
     }
 })
