@@ -14,7 +14,7 @@ require"lspconfig".efm.setup {
       },
       rust = {{formatCommand = "rustfmt --quiet", formatStdin = true}},
       -- typescript = {{formatCommand = "prettier --single-quote"}, formatStdin = true},
-      javascript = {{formatCommand = "prettier --single-quote", formatStdin = true}}
+      javascript = {{formatCommand = "npx prettier --single-quote", formatStdin = true}}
       -- python = {{formatCommand = "black --quiet -"}, formatStdin = true},
       -- vue = {{formatCommand = "prettier --single-quote --vue-indent-script-and-style"}, formatStdin = true},
       -- svelte = {{formatCommand = "prettier --single-quote"}, formatStdin = true}
