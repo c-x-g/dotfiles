@@ -1,8 +1,13 @@
+local api = vim.api
+
 -- autoformatter
 require"lspconfig".efm.setup {
   on_attach = on_attach,
   init_options = {documentFormatting = true},
-  filetypes = {"lua", "python", "javascript", "typescript", "vue", "yaml", "java", "svelte", "rust"},
+  filetypes = {
+    "lua", "python", -- "javascript",
+    "typescript", "vue", "yaml", "java", "svelte", "rust"
+  },
   settings = {
     rootMarkers = {".git/"},
     languages = {
@@ -14,8 +19,9 @@ require"lspconfig".efm.setup {
       },
       rust = {{formatCommand = "rustfmt --quiet", formatStdin = true}},
       -- typescript = {{formatCommand = "prettier --single-quote"}, formatStdin = true},
-      javascript = {{formatCommand = "npx prettier --single-quote", formatStdin = true}}
-      -- python = {{formatCommand = "black --quiet -"}, formatStdin = true},
+      javascript = {{formatCommand = "prettier --quiet --single-quote --stdin-filepath " .. api.nvim_buf_get_name(0)}},
+      typescript = {{formatCommand = "prettier --quiet --single-quote --stdin-filepath " .. api.nvim_buf_get_name(0)}},
+      python = {{formatCommand = "isort --quiet -i 4 -", formatStdin = true}}
       -- vue = {{formatCommand = "prettier --single-quote --vue-indent-script-and-style"}, formatStdin = true},
       -- svelte = {{formatCommand = "prettier --single-quote"}, formatStdin = true}
 

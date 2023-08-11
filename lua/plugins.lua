@@ -56,11 +56,7 @@ return require("packer").startup(function()
 
   -- lua snippets
 
-  use ({
-    "L3MON4D3/LuaSnip",
-    tag = "v<CurrentMajor>.*",
-	run = "make install_jsregexp"
-  })
+  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*", run = "make install_jsregexp"})
 
   -- use {
   --   "hrsh7th/nvim-cmp",
@@ -92,6 +88,9 @@ return require("packer").startup(function()
 
   -- Which Key
   use "liuchengxu/vim-which-key"
+
+  -- 'better quickfix window'
+  use {"kevinhwang91/nvim-bqf"}
 
   -- --------------------------------------------------------------------------------------------------------------
   --                                                  Git Tools
@@ -159,6 +158,9 @@ return require("packer").startup(function()
 
   -- nightfox
   use "EdenEast/nightfox.nvim"
+
+  -- onedark
+  use "ful1e5/onedark.nvim"
 
   -- nvim-tree (file explorer)
   use {

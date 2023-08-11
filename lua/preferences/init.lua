@@ -5,6 +5,7 @@ local indent = 4
 local cmd = vim.cmd
 
 local normal_color_scheme = "gruvbox"
+-- local normal_color_scheme = "onedark"
 -- local insert_color_scheme = 'gruvbox'
 
 cmd "set clipboard+=unnamedplus"
@@ -23,6 +24,7 @@ cmd("colorscheme " .. normal_color_scheme)
 -- cmd 'colorscheme tokyonight'
 -- vim.o.background = 'light'
 -- vim.g.tokyonnight_style = 'day'
+
 utils.opt("b", "expandtab", true)
 utils.opt("b", "shiftwidth", indent)
 utils.opt("b", "smartindent", true)
@@ -74,7 +76,14 @@ local autoformat = function()
 end
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.svelte"},
+  pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.svelte"},
+  callback = function()
+    autoformat()
+  end
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = {"*.js", "*.ts"},
   callback = function()
     autoformat()
   end

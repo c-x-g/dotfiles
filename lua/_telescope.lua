@@ -30,7 +30,7 @@ end
 
 require("telescope").setup {
   defaults = {
-    mappings = {i = {["<CR>"] = actions.select_tab, ["<C-T>"] = telescope_custom_actions.multi_selection_open_tab}},
+    mappings = {i = {["<CR>"] = actions.select_tab, ["<C-T>"] = telescope_custom_actions.multi_selection_open}},
     file_ignore_patterns = {"node_modules"}
   },
   pickers = {
@@ -59,6 +59,4 @@ require("telescope").setup {
   }
 }
 require("telescope").load_extension("fzy_native")
-
-
 
