@@ -1,4 +1,5 @@
 require("plugins")
+require("lazy-nvim-plugins")
 require("lspconfig-configurations")
 require("location_handler")
 -- require('keybindings')
