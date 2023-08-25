@@ -29,10 +29,7 @@ function telescope_custom_actions.multi_selection_open(prompt_bufnr)
 end
 
 require("telescope").setup {
-  defaults = {
-    mappings = {i = {["<CR>"] = actions.select_tab, ["<C-T>"] = telescope_custom_actions.multi_selection_open}},
-    file_ignore_patterns = {"node_modules"}
-  },
+  defaults = {mappings = {i = {["<CR>"] = actions.select_tab, ["<C-T>"] = telescope_custom_actions.multi_selection_open}}, file_ignore_patterns = {"node_modules"}},
   pickers = {
     grep_string = {
       mappings = {

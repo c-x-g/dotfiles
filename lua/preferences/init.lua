@@ -68,31 +68,31 @@ cmd "au TextYankPost * lua vim.highlight.on_yank {on_visual = false}"
 local autoformat = function()
   -- vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
   -- vim.lsp.buf.format(nil, 1000, 2)
-  vim.lsp.buf.format({
-    timeout_ms = 1000,
-    name = "efm"
-    -- : id = 1
-  })
+  vim.lsp.buf.format(
+      {
+        timeout_ms = 1000,
+        name = "efm"
+        -- : id = 1
+      })
 end
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.svelte"},
-  callback = function()
-    autoformat()
-  end
-})
+vim.api.nvim_create_autocmd(
+    "BufWritePre", {
+      pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.dart"},
+      callback = function()
+        autoformat()
+      end
+    })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = {"*.js", "*.ts"},
-  callback = function()
-    autoformat()
-  end
-})
+vim.api.nvim_create_autocmd(
+    "BufWritePost", {
+      pattern = {"*.js", "*.ts", "*.svelte"},
+      callback = function()
+        autoformat()
+      end
+    })
 
-vim.api.nvim_create_autocmd({"BufNewFile,BufRead"}, {
-  pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml", "*.java"},
-  command = "setlocal formatoptions-=cro"
-})
+vim.api.nvim_create_autocmd({"BufNewFile,BufRead"}, {pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml", "*.java"}, command = "setlocal formatoptions-=cro"})
 
 -- -- disable comment continuation on subsequent lines
 -- vim.cmd 'set formatoptions-=cro'
