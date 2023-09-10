@@ -19,6 +19,7 @@ cmd "set autoindent"
 
 -- set the colorscheme
 cmd("colorscheme " .. normal_color_scheme)
+-- vim.o.background = "light"
 -- cmd 'colorscheme nord'
 
 -- cmd 'colorscheme tokyonight'
@@ -33,7 +34,7 @@ utils.opt("o", "hidden", true)
 utils.opt("o", "ignorecase", true)
 utils.opt("w", "number", true)
 utils.opt("w", "relativenumber", true)
--- utils.opt('o', 'termguicolors', true)
+utils.opt("o", "termguicolors", true)
 utils.opt("o", "completeopt", "menuone,noinsert,noselect")
 
 -- set line numbers in NERDTree
@@ -71,28 +72,26 @@ local autoformat = function()
   vim.lsp.buf.format(
       {
         timeout_ms = 1000,
-        name = "efm"
+        name = "efm",
         -- : id = 1
       })
 end
 
 vim.api.nvim_create_autocmd(
-    "BufWritePre", {
-      pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.java", "*.rs", "*.dart"},
-      callback = function()
-        autoformat()
-      end
-    })
+    "BufWritePre",
+        {
+          pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.rs", "*.dart"},
+          callback = function() autoformat() end,
+        })
 
 vim.api.nvim_create_autocmd(
-    "BufWritePost", {
-      pattern = {"*.js", "*.ts", "*.svelte"},
-      callback = function()
-        autoformat()
-      end
-    })
+    "BufWritePost", {pattern = {"*.js", "*.ts", "*.svelte"}, callback = function() autoformat() end})
 
-vim.api.nvim_create_autocmd({"BufNewFile,BufRead"}, {pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml", "*.java"}, command = "setlocal formatoptions-=cro"})
+vim.api.nvim_create_autocmd(
+    {"BufNewFile,BufRead"}, {
+      pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml"},
+      command = "setlocal formatoptions-=cro",
+    })
 
 -- -- disable comment continuation on subsequent lines
 -- vim.cmd 'set formatoptions-=cro'
