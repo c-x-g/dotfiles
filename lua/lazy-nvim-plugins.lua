@@ -100,7 +100,7 @@ require("lazy").setup(
         "nvim-neotest/neotest",
         dependencies = {"nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter", "antoinemadec/FixCursorHold.nvim"},
       }, "nvim-neotest/neotest-go", "nvim-neotest/neotest-python", "rouge8/neotest-rust", -- jest isn't ready yet
-      -- 'haydenmeade/neotest-jest',
+      {"nvim-neotest/nvim-nio"}, -- 'haydenmeade/neotest-jest',
       -- --------------------------------------------------------------------------------------------------------------
       --                                                  Debugger
       -- --------------------------------------------------------------------------------------------------------------

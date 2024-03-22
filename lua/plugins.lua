@@ -185,6 +185,7 @@ return require("packer").startup(
       use "nvim-neotest/neotest-go"
       use "nvim-neotest/neotest-python"
       use "rouge8/neotest-rust"
+      use "nvim-neotest/nvim-nio"
 
       -- jest isn't ready yet
       -- use 'haydenmeade/neotest-jest'
