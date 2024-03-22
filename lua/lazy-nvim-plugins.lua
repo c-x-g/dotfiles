@@ -19,20 +19,27 @@ require("lazy").setup(
       {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}, -- autoclose plugin
       {"windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end}, -- lua completion
       -- "nvim-lua/completion-nvim", -- hrsh7th packages
-      "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lua", {
-        "hrsh7th/nvim-cmp",
-        dependencies = {"hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer"},
-        config = function()
-          require"cmp".setup {
-            snippet = {expand = function(args) require"luasnip".lsp_expand(args.body) end},
-            sources = {
-              {name = "luasnip"},
-              -- more sources
-            },
-          }
-        end,
-      }, "hrsh7th/vim-vsnip", -- {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*", build = "make install_jsregexp"},
-      "hrsh7th/cmp-vsnip", {"saadparwaiz1/cmp_luasnip"}, -- nerdtree
+      "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/nvim-cmp", -- {
+      --   "hrsh7th/nvim-cmp",
+      --   dependencies = {"hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer"},
+      --   config = function()
+      --     require"cmp".setup {
+      --       snippet = {expand = function(args) require"luasnip".lsp_expand(args.body) end},
+      --       sources = {
+      --         {name = "luasnip"},
+      --         -- more sources
+      --       },
+      --     }
+      --   end,
+      -- }, 
+      "hrsh7th/vim-vsnip", {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+      }, "hrsh7th/cmp-vsnip", {"saadparwaiz1/cmp_luasnip"}, -- nerdtree
       --    'preservim/nerdtree',
       -- colorizer
       "norcalli/nvim-colorizer.lua", -- formatter

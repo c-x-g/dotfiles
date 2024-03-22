@@ -7,7 +7,7 @@ require("lspconfig-configurations")
 -- require("border")
 require("_lualine")
 require("efm-langserver")
--- require("luasnips")
+require("luasnips")
 require("completion-config")
 -- 
 require("preferences")
@@ -33,4 +33,4 @@ require("testing")
 -- 
 -- -- debugging
 require("_debug")
--- 
+

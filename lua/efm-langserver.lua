@@ -1,12 +1,15 @@
 local api = vim.api
 
+-- formatter for javascript/typescript projects
+local prettierd = {formatCommand = "prettierd \"${INPUT}\"", formatStdin = true}
+
 -- autoformatter
 require"lspconfig".efm.setup {
   -- on_attach = on_attach,
   init_options = {documentFormatting = true},
   filetypes = {
-    "lua", "python", -- "javascript",
-    "typescript", "vue", "yaml", "java", "svelte", "rust", "dart",
+    "lua", "python", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "yaml", "java", "svelte",
+    "rust", "dart",
   },
   settings = {
     rootMarkers = {".git/"},
@@ -19,15 +22,16 @@ require"lspconfig".efm.setup {
       },
       rust = {{formatCommand = "rustfmt --quiet", formatStdin = true}},
       dart = {{formatCommand = "dart format", formatStdin = true}},
-      -- typescript = {{formatCommand = "prettier --single-quote"}, formatStdin = true},
-      javascript = {{formatCommand = "prettier --quiet --single-quote --stdin-filepath " .. api.nvim_buf_get_name(0)}},
-      typescript = {{formatCommand = "prettier --quiet --single-quote --stdin-filepath " .. api.nvim_buf_get_name(0)}},
+      javascript = {prettierd},
+      javascriptreact = {prettierd},
+      typescript = {prettierd},
+      typescriptreact = {prettierd},
       python = {{formatCommand = "isort --quiet -i 4 -", formatStdin = true}},
-      java = {{formatCommand = "google-java-format -i", formatStdin = true}},
+      java = {{formatCommand = "google-java-format -", formatStdin = true}},
       -- vue = {{formatCommand = "prettier --single-quote --vue-indent-script-and-style"}, formatStdin = true},
-      svelte = {
-        {formatCommand = "prettier --plugin prettier-plugin-svelte --stdin-filepath " .. api.nvim_buf_get_name(0)},
-      },
+      svelte = {prettierd},
+      -- {formatCommand = "prettier --plugin=prettier-plugin-svelte --stdin-filepath " .. api.nvim_buf_get_name(0)},
+      yaml = {{formatCommand = "yamlfmt -in", formatStdin = true}},
 
       --   javascript = {
       --     {

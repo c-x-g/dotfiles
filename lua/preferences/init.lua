@@ -19,6 +19,7 @@ cmd "set autoindent"
 
 -- set the colorscheme
 cmd("colorscheme " .. normal_color_scheme)
+cmd "highlight Normal ctermbg=NONE guibg=NONE"
 -- vim.o.background = "light"
 -- cmd 'colorscheme nord'
 
@@ -69,6 +70,7 @@ cmd "au TextYankPost * lua vim.highlight.on_yank {on_visual = false}"
 local autoformat = function()
   -- vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'efm' })
   -- vim.lsp.buf.format(nil, 1000, 2)
+  -- print("here is the current file: " .. vim.api.nvim_buf_get_name(0))
   vim.lsp.buf.format(
       {
         timeout_ms = 1000,
@@ -78,20 +80,23 @@ local autoformat = function()
 end
 
 vim.api.nvim_create_autocmd(
-    "BufWritePre",
-        {
-          pattern = {"*.lua", "*.py", "*.vue", "*.yaml", "*.yml", "*.rs", "*.dart"},
-          callback = function() autoformat() end,
-        })
+    "BufWritePre", {
+      pattern = {"*.lua", "*.vue", "*.yaml", "*.yml", "*.rs", "*.dart", "*.java", "*.js", "*.ts", "*.jsx", "*.tsx"},
+      callback = function() autoformat() end,
+    })
+
+-- vim.api.nvim_create_autocmd("BufWritePost", {pattern = {"*.ts", "*.svelte"}, callback = function() autoformat() end})
 
 vim.api.nvim_create_autocmd(
-    "BufWritePost", {pattern = {"*.js", "*.ts", "*.svelte"}, callback = function() autoformat() end})
-
-vim.api.nvim_create_autocmd(
-    {"BufNewFile,BufRead"}, {
+    {"BufNewFile", "BufRead"}, {
       pattern = {"*.lua", "*.py", "*.js", "*.ts", "*.vue", "*.rs", "*.yaml", "*.yml"},
       command = "setlocal formatoptions-=cro",
     })
+
+-- automatically format python files with black
+local python_file_format_group = vim.api.nvim_create_augroup("Black", {clear = true})
+vim.api.nvim_create_autocmd(
+    "BufWritePost", {pattern = "*.py", command = "silent !black %", group = python_file_format_group})
 
 -- -- disable comment continuation on subsequent lines
 -- vim.cmd 'set formatoptions-=cro'
