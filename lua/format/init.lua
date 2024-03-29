@@ -1,1 +1,1 @@
-require('format/autopairs')
+require("format/autopairs")

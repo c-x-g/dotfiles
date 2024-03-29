@@ -8,7 +8,7 @@ require"lspconfig".volar.setup {
       documentSymbol = true,
       foldingRange = true,
       linkedEditingRange = true,
-      selectionRange = true
+      selectionRange = true,
     },
     languageFeatures = {
       callHierarchy = true,
@@ -27,8 +27,8 @@ require"lspconfig".volar.setup {
       schemaRequestService = true,
       semanticTokens = false,
       signatureHelp = true,
-      typeDefinition = true
+      typeDefinition = true,
     },
-    typescript = {serverPath = ""}
-  }
+    typescript = {serverPath = ""},
+  },
 }
