@@ -8,7 +8,7 @@ require"lspconfig".efm.setup {
   -- on_attach = on_attach,
   init_options = {documentFormatting = true},
   filetypes = {
-    "css","lua", "python", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "yaml", "java", "svelte",
+    "css","lua", "python", "json", "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "yaml", "java", "svelte",
     "rust", "dart",
   },
   settings = {
@@ -23,6 +23,7 @@ require"lspconfig".efm.setup {
       rust = {{formatCommand = "rustfmt --quiet", formatStdin = true}},
       dart = {{formatCommand = "dart format", formatStdin = true}},
       css = {prettierd},
+      json = {{formatCommand = "jq", formatStdin = true}},
       javascript = {prettierd},
       javascriptreact = {prettierd},
       typescript = {prettierd},

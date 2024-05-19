@@ -67,3 +67,20 @@ ls.add_snippets(
           )),
     })
 
+-- ls.add_snippets(
+--     "typescriptreact", {
+--       s(
+--           "rafce", fmt(
+--               [[
+--      import React from 'react'
+--  
+--      const page = () => {
+--          return (
+--              <div>page</div>
+--          )
+--      }
+--  
+--      export default page{}
+--      ]], {i(1)})),
+--     })
+

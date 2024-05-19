@@ -1,6 +1,6 @@
 require("lazy-nvim-plugins")
 require("lspconfig-configurations")
--- require("location_handler")
+
 require("_lualine")
 require("efm-langserver")
 require("luasnips")

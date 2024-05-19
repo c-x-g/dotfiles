@@ -81,7 +81,7 @@ end
 
 vim.api.nvim_create_autocmd(
     "BufWritePre", {
-      pattern = {"*.css", "*.lua", "*.vue", "*.yaml", "*.yml", "*.rs", "*.dart", "*.java", "*.js", "*.ts", "*.jsx", "*.tsx"},
+      pattern = {"*.css", "*.lua", "*.vue", "*.yaml", "*.yml", "*.rs", "*.dart", "*.java", "*.js", "*.json", "*.ts", "*.jsx", "*.tsx"},
       callback = function() autoformat() end,
     })
 
